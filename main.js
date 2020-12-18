@@ -1991,13 +1991,14 @@ let result = arr.filter(inBetween(3, 6));
 console.log(result);
 let resultOne = arr.filter(inArray([1, 2, 10]))
 console.log(resultOne); */
-let users = [
+
+/* let users = [
     { name: "John", age: 20, surname: "Johnson" },
     { name: "Pete", age: 18, surname: "Peterson" },
     { name: "Ann", age: 19, surname: "Hathaway" }
 ];
-/* console.log(users.sort((a, b) => a.name > b.name ? 1 : -1));
-console.log((users.sort((a, b) => a.age > b.age ? 1 : -1))); */
+console.log(users.sort((a, b) => a.name > b.name ? 1 : -1));
+console.log((users.sort((a, b) => a.age > b.age ? 1 : -1)));
 
 function byField(names) {
     return (a, b) => {
@@ -2005,4 +2006,157 @@ function byField(names) {
     }
 }
 
-console.log('users.sort(byField(name)): ', users.sort(byField("name")));
+console.log('users.sort(byField(name)): ', users.sort(byField("name"))); */
+
+/* let arr = [1, 2, 3, 4, 5, 6, 7];
+
+function inBetween(a, b) {
+    return (x) => x >= a && x <= b;
+}
+console.log(arr.filter(inBetween(3, 6)));
+
+function inArray(arr) {
+    return (x) => arr.includes(x)
+}
+console.log(arr.filter(inArray([1, 2, 10, 5]))); */
+
+/* let users = [
+    { name: "John", age: 20, surname: "Johnson" },
+    { name: "Pete", age: 18, surname: "Peterson" },
+    { name: "Ann", age: 19, surname: "Hathaway" }
+];
+
+function byField(filed) {
+    return (a, b) => a[filed] > b[filed] ? 1 : -1;
+}
+console.log(users.sort(byField('surname'))); */
+/* function makeArmy() {
+    let shooters = [];
+
+    for (let i = 0; i < 10; i++) {
+        let shooter = function() {
+            console.log(i);
+        }
+        shooters.push(shooter)
+    }
+    return shooters;
+}
+let army = makeArmy();
+army[1]() */
+
+
+/* window.currentUser = {
+    name: 'Aleh',
+    age: 25
+}
+console.log(currentUser.name); */
+
+/* function sayHi() {
+    console.log('hay');
+}
+console.log(sayHi.name); */
+
+/* let user = {
+    sayHi() {
+        console.log("=");
+    },
+    sayBy: function() {
+        console.log('_');
+    },
+    say() {
+        return this.sayHi.name + " " + this.sayBy.name
+    }
+}
+console.log(user.say()); */
+
+/* function ask(questions, ...handlers) {
+    let isYes = confirm(questions);
+
+    for (let handler of handlers) {
+        if (handler.length == 0) {
+            if (isYes) {
+                handler();
+            } else {
+                handler(isYes)
+            }
+        }
+    }
+}
+ask("Questions?", () => alert('Yuo answer yes?'), result => alert(result)) */
+
+/* function sayHi() {
+    console.log('Hi');
+    sayHi.counter++;
+}
+sayHi.counter = 0;
+sayHi();
+sayHi();
+sayHi();
+console.log(sayHi.counter); */
+/* function makeCounter() {
+    // вместо
+    // let count = 0
+
+    function counter() {
+        return counter.count++;
+    };
+
+    counter.count = 0;
+
+    return counter;
+}
+
+let count = makeCounter();
+console.log(count());
+console.log(count()); */
+
+/* let sayHi = function foo(who) {
+    if (who) {
+        alert(`Hello, ${who}`);
+    } else {
+        sayHi("Guest");
+    }
+};
+let welcom = sayHi;
+
+welcom('Aleh') */
+
+/* function makeCounter() {
+    function counter() {
+        counter.set = (value) => counter.count = value;
+        counter.decrease = () => counter.count--;
+        return counter.count++;
+    }
+
+    counter.count = 0;
+
+    return counter;
+}
+
+let counter = makeCounter();
+counter();
+counter();
+console.log(counter());
+counter();
+counter();
+console.log(counter());
+counter.set(5);
+console.log(counter());
+counter.decrease()
+counter.decrease()
+counter.decrease()
+counter.decrease()
+console.log(counter()); */
+
+function sum(a) {
+    let currentSum = a;
+
+    function f(b) {
+        currentSum += b;
+        f.toString = () => currentSum;
+        return f;
+    }
+    return f;
+}
+
+console.log(sum(6)(-1)(-2)(-3));
