@@ -1720,7 +1720,7 @@ console.log(JSON.stringify(meetup, function replacer(key, value) {
     console.log(key + ':' + value);
     return (key == "occupiedBy") ? undefined : value
 })); */
-/* 
+/*
 let user = {
     name: 'aleh',
     age: 27,
@@ -1858,8 +1858,8 @@ console.log(sumTo(100)); */
 }
 console.log(factorial(3)); */
 
-function fibo(n) {
-    /* return (n > 1) ? fibo(n - 1) + fibo(n - 2) : n; */
+/* function fibo(n) {
+    return (n > 1) ? fibo(n - 1) + fibo(n - 2) : n;
     let a = 1;
     let b = 1;
     for (let i = 3; i <= n; i++) {
@@ -1869,4 +1869,140 @@ function fibo(n) {
     }
     return b
 }
-console.log(fibo(7));
+console.log(fibo(7)); */
+
+/* let list = {
+    value: 1,
+    next: {
+        value: 2,
+        next: {
+            value: 3,
+            next: {
+                value: 4,
+                next: null
+            }
+        }
+    }
+}; */
+
+/* function printList(list) {
+    console.log(list.next);
+    if (list.next != null) {
+        printList(list.next)
+    }
+    //let tmp = list;
+    //while (tmp) {
+    //    console.log(tmp.value);
+    //    tmp = tmp.next
+    //}
+}
+
+printList(list) */
+
+
+//SPRED AND REST
+
+/* function showName(...arr) {
+    onsole.log(arguments.length);
+        console.log(arguments);
+    console.log(arr);
+}
+showName(23, 45, 2, 1, 324) */
+/* let arr = [3, 234, 21, 54841, 12, 234, 77];
+let newArr = [...arr, 2, 32, 123, 4534];
+console.log(newArr); */
+
+
+/* !
+
+function showFun() {
+    console.log("+");
+}() */
+/* function f() {
+    let value = Math.random();
+    console.log(value);
+    return function() {
+        return value
+    }
+}
+
+let arr = [f(), f(), f()]
+console.log(arr); */
+
+
+/* let value = "Сюрприз!";
+
+function f() {
+    let value = "ближайшее значение";
+
+    function g() {
+        debugger; // в консоли: напишите alert(value); Сюрприз!
+    }
+
+    return g;
+}
+
+let g = f();
+console.log(g()); */
+
+/* function Counter() {
+    let count = 0;
+    this.up = function() {
+        return ++count
+    };
+    this.down = function() {
+        return count--
+    };
+}
+
+let counter = new Counter();
+
+console.log(counter.up());
+console.log(counter.up());
+
+console.log(counter.up());
+
+console.log(counter.up()); */
+
+/* function sum(a) {
+    return function(b) {
+        return a + b
+    }
+}
+
+console.log(sum(5)(3)); */
+
+
+/* let arr = [1, 2, 3, 5, 5, 6, 7];
+
+function inBetween(a, b) {
+    return function(x) {
+        return x >= a && x <= b
+    }
+}
+
+function inArray(arr) {
+    return function(x) {
+        return arr.includes(x)
+    }
+}
+
+let result = arr.filter(inBetween(3, 6));
+console.log(result);
+let resultOne = arr.filter(inArray([1, 2, 10]))
+console.log(resultOne); */
+let users = [
+    { name: "John", age: 20, surname: "Johnson" },
+    { name: "Pete", age: 18, surname: "Peterson" },
+    { name: "Ann", age: 19, surname: "Hathaway" }
+];
+/* console.log(users.sort((a, b) => a.name > b.name ? 1 : -1));
+console.log((users.sort((a, b) => a.age > b.age ? 1 : -1))); */
+
+function byField(names) {
+    return (a, b) => {
+        a[names] > b[names] ? 1 : -1
+    }
+}
+
+console.log('users.sort(byField(name)): ', users.sort(byField("name")));
