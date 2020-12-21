@@ -2195,8 +2195,345 @@ let timerId = setTimeout(function request() {
 
 clearTimeout(timerId) */
 
-let i = 1;
+/* let i = 1;
 
-/* setInterval(function() {
+setInterval(function() {
     console.log(i);
 }, 100) */
+
+/* let start = Date.now();
+let times = [];
+setTimeout(function run() {
+    times.push(Date.now() - start);
+    if (start + 1000 < Date.now()) {
+        console.log(times);
+    } else {
+        setTimeout(run, 500)
+    }
+}) */
+
+/* function printNumbers(from, to) {
+    setInterval(() => {
+        if (from < to) {
+            console.log(from++);
+        }
+    }, 1000)
+}
+printNumbers(5, 17) */
+/* function printNumbers(from, to) {
+    setTimeout(function timer() {
+        if (from < to) {
+            console.log(from++);
+            setTimeout(timer, 1000)
+        }
+    }, 1000)
+}
+printNumbers(5, 17) */
+
+/* let j = 0;
+
+setTimeout(() => console.log(i), 100);
+
+for (let i = 0; i < 100000000; i++) {
+    console.log(j++);
+} */
+
+/* function slow(x) {
+    console.log(`Called with ${x}`);
+    return x;
+}
+
+function cachingDecorator(func) {
+    let cache = new Map();
+    return function(x) {
+        if (cache.has(x)) {
+            return cache.get(x)
+        }
+        let result = func(x);
+        cache.set(x, result);
+        return result;
+    }
+}
+slow = cachingDecorator(slow)
+slow(1);
+slow(2);
+slow(2) */
+
+/* function sayHi() {
+    console.log(this.name);
+}
+let user = { name: 'Aleh' };
+let admin = { name: 'Admin' }
+sayHi.call(user);
+sayHi.call(admin) */
+
+/* function say(phrase) {
+    console.log(this.name + " : " + phrase);
+}
+let user = { name: 'Aleh' };
+
+say.call(user, 'hello') */
+
+/* let worker = {
+    slow(min, max) {
+        console.log(`Called with ${min}, ${max}`);
+        return min + max
+    }
+}
+
+function cachingDecorator(func, hash) {
+    let cache = new Map();
+    console.log(' cache: ', cache);
+    return function() {
+        let key = hash(arguments);
+        console.log('key: ', key);
+        if (cache.has(key)) {
+            return cache.get(key)
+        }
+        let result = func.call(this, ...arguments);
+        cache.set(key, result);
+        return result;
+    }
+}
+
+function hash(args) {
+    return [].join.call(args)
+}
+
+worker.slow = cachingDecorator(worker.slow, hash);
+console.log(worker.slow(3, 5, 7, 8)); */
+
+/* function work(a, b) {
+    console.log(a + b)
+    return a + b;
+}
+
+function spy(func, hash) {
+    let cache = new Map();
+
+    return function() {
+        let key = hash(arguments);
+        if (cache.has(key)) {
+            return cache.get(key)
+        }
+        let result = func.apply(this, arguments);
+        cache.set(key, result);
+        return result;
+    }
+}
+
+function hash(args) {
+    return [].join.call(args)
+}
+
+work = spy(work, hash);
+work(1, 3) */
+
+/* function work(a, b) {
+    console.log(a + b);
+}
+
+function spy(func) {
+    function wrapper(...args) {
+        wrapper.calls.push(args);
+        return func.apply(this, arguments);
+    }
+    wrapper.calls = [];
+    return wrapper;
+}
+work = spy(work);
+
+work(1, 2)
+work(4, 5);
+for (let args of work.calls) {
+    console.log(args.join());
+} */
+
+/* function f(x) {
+    console.log(x);
+}
+
+function delay(f, ms) {
+    return function() {
+        setTimeout(() => {
+            f.apply(this, arguments)
+        }, ms)
+    }
+}
+
+
+let f1000 = delay(f, 1000);
+f1000('test'); */
+
+/* function f(x) {
+    console.log(x);
+}
+
+function debounce(f, ms) {
+    let isCooldown = false;
+
+    return function() {
+        if (isCooldown) return;
+        f.apply(this, arguments)
+        isCooldown = true;
+        setTimeout(() => isCooldown = false, ms)
+    }
+}
+f = debounce(alert, 5000);
+f(1) */
+
+/* function f(a) {
+    console.log(a);
+}
+
+function throttle(f, ms) {
+    let isThrottle = false;
+    function wrapper() {
+        if (isThrottle) {
+            saveArgs = arguments;
+            saveThis = this;
+            return;
+        }
+        f.apply(this, arguments);
+
+        isThrottle = true;
+
+        setTimeout(function() {
+            isThrottle = false;
+            if (saveArgs) {
+                wrapper.apply(saveThis, saveArgs);
+                saveArgs = saveThis = null;
+            }
+        }, ms)
+    }
+    return wrapper
+}
+let f1000 = throttle(f, 1000);
+f1000(1)
+f1000(2)
+f1000(4) */
+
+
+/* let user = {
+    firstName: "Aleh",
+    sayHi() {
+        console.log(`hello, ${this.firstName}`);
+    }
+}
+
+setTimeout(user.sayHi.bind(user), 1000) */
+
+/* let user = {
+    firstName: 'Aleh'
+}
+
+function func() {
+    return this.firstName;
+}
+
+let funcUser = func.bind(user);
+
+console.log(funcUser()); */
+
+/* function mul(a, b) {
+    return a * b
+}
+
+let double = mul.bind(null, 2);
+
+console.log(double(3)); */
+
+/* function partial(func, ...argsBound) {
+    return function(...args) {
+        return func.call(this, ...argsBound, ...args)
+    }
+}
+
+let user = {
+    name: 'Aleh',
+    say(time, phrase) {
+        console.log(`[${time}] ${this.name}: ${phrase}! `);
+    }
+}
+
+user.sayNow = partial(user.say, new Date().getHours() + ":" +
+    new Date().getMinutes());
+user.sayNow('Hello') */
+
+
+/* function f() {
+    console.log(this);
+}
+f() */
+
+/* function f() {
+    console.log(this.name)
+}
+
+f = f.bind({ name: 'Aleh' });
+f = f.bind({ name: 'Tatsian' })
+console.log(f());
+console.log(f()); */
+/* function askPassword(ok, fail) {
+    let password = prompt("Password?", '');
+    if (password == "rockstar") ok();
+    else fail();
+}
+
+let user = {
+    name: 'Вася',
+
+    loginOk() {
+        alert(`${this.name} logged in`);
+    },
+
+    loginFail() {
+        alert(`${this.name} failed to log in`);
+    },
+
+};
+
+askPassword(user.loginOk.bind(user), user.loginFail.bind(user)); */
+
+
+/* function askPassword(ok, fail) {
+    let password = prompt('Password?', " ");
+    if (password === 'rockstar') ok();
+    else fail()
+}
+
+let user = {
+    name: "aleh",
+    login(result) {
+        console.log((this.name + " " + (result ? "logged in" : "failed to log in")));
+    }
+}
+askPassword(user.login.bind(user, true), user.login.bind(user, false)) */
+
+
+/* let group = {
+    title: "Our group",
+    students: ['Aleh', 'Vova', 'Slava'],
+    showList() {
+        this.students.forEach(item => {
+            console.log(this.title + ":" + item);
+        })
+    }
+}
+
+group.showList() */
+
+function defer(f, ms) {
+    return function(x) {
+        setTimeout(() => f.call(this, x), ms)
+    }
+}
+
+function sayHi(who) {
+    console.log('hello' + " " + who);
+}
+
+let sayHiDeferred = defer(sayHi, 2000);
+
+
+sayHiDeferred('Aleh')
