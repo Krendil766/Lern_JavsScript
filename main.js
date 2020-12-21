@@ -2148,7 +2148,7 @@ counter.decrease()
 counter.decrease()
 console.log(counter()); */
 
-function sum(a) {
+/* function sum(a) {
     let currentSum = a;
 
     function f(b) {
@@ -2159,4 +2159,44 @@ function sum(a) {
     return f;
 }
 
-console.log(sum(6)(-1)(-2)(-3));
+console.log(sum(6)(-1)(-2)(-3)); */
+
+/* function sayHi(phrase, who) {
+    console.log(phrase + ' ' + who);
+}
+let a = setInterval(sayHi, 1000, 'Hello', "Aleh");
+
+let b = setInterval('console.log("Bey")', 2000);
+clearInterval(a)
+clearInterval(b) */
+
+/* let timerId = setTimeout(() => console.log('Hello'), 2000);
+
+clearTimeout(timerId);
+console.log(timerId); */
+
+/* let timerId = setInterval(() => console.log('tick'), 2000);
+setTimeout(() => clearInterval(timerId), 7000) */
+
+/* let timerId = setTimeout(function tick() {
+    console.log('tick');
+    timerId = setTimeout(tick, 2000)
+}, 2000) */
+
+/* let delay = 5000;
+
+let timerId = setTimeout(function request() {
+    console.log(1);
+    if (true) {
+        delay * 2
+    }
+    timerId = setTimeout(request, delay)
+})
+
+clearTimeout(timerId) */
+
+let i = 1;
+
+/* setInterval(function() {
+    console.log(i);
+}, 100) */
