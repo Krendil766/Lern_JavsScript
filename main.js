@@ -2523,7 +2523,7 @@ askPassword(user.login.bind(user, true), user.login.bind(user, false)) */
 
 group.showList() */
 
-function defer(f, ms) {
+/* function defer(f, ms) {
     return function(x) {
         setTimeout(() => f.call(this, x), ms)
     }
@@ -2536,4 +2536,4 @@ function sayHi(who) {
 let sayHiDeferred = defer(sayHi, 2000);
 
 
-sayHiDeferred('Aleh')
+sayHiDeferred('Aleh') */
