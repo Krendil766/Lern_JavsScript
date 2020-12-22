@@ -1,3 +1,5 @@
+"use strict";
+
 /* let user = {
     name: "Aleh",
     age: 30
@@ -2196,6 +2198,7 @@ let timerId = setTimeout(function request() {
 clearTimeout(timerId) */
 
 /* let i = 1;
+<<<<<<< HEAD
 
 setInterval(function() {
     console.log(i);
@@ -2537,3 +2540,106 @@ let sayHiDeferred = defer(sayHi, 2000);
 
 
 sayHiDeferred('Aleh') */
+=======
+ */
+/* setInterval(function() {
+    console.log(i);
+}, 100) */
+
+/* let user = {
+    name: 'Aleh',
+}
+
+let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+Object.defineProperty(user, 'age', {
+    value: 27,
+    writable: true,
+    enumerable: true,
+})
+let descriptorTwo = Object.getOwnPropertyDescriptor(user, 'age')
+Object.defineProperty(user, 'age', {
+    writable: false,
+})
+let descriptorTherre = Object.getOwnPropertyDescriptor(user, 'age')
+console.log(JSON.stringify(descriptorTherre, null, 2));
+user.name = 'Tatsiana'
+
+
+
+user.toString = function() {
+    return this.name
+}
+console.log(user.toString());
+Object.defineProperty(user, 'toString', {
+    writable: true,
+    enumerable: false
+})
+
+
+let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(user));
+console.log(Object.getOwnPropertyDescriptors(clone)); */
+
+
+/* let user = {
+    name: 'Aleh',
+    surname: "Kudzelka",
+
+    get fullName() {
+        return this.name + " " + this.surname
+    },
+    set fullName(value) {
+        [this.name, this.surname] = value.split(' ')
+    }
+}
+
+console.log(user.fullName);
+user.fullName = "Tatsiana Kudzelka"
+console.log(user.fullName); */
+
+/* let user = {
+    name: 'Aleh',
+    surname: 'Kudzelka',
+}
+
+Object.defineProperty(user, 'fullName', {
+    get() {
+        return this.name + " " + this.surname
+    },
+    set(value) {
+        [this.name, this.surname] = value.split[' ']
+    }
+})
+
+console.log(user.fullName); */
+
+/* let user = {
+    get name() {
+        return this._name;
+    },
+    set name(value) {
+        if (value.length < 4) {
+            console.log('name is litle,must be four characters');
+            return;
+        }
+        return this._name = value;
+    }
+}
+user.name = 'Aleh'
+
+console.log(user.name) */
+
+/* function User(name, birthday) {
+    this.name = name;
+    this.birthday = birthday;
+
+    Object.defineProperty(this, "age", {
+        get() {
+            let todayYear = new Date().getFullYear();
+            return todayYear - this.birthday.getFullYear()
+        }
+    })
+}
+let aleh = new User('Aleh', new Date(1993, 7, 7))
+console.log(aleh);
+console.log(aleh.age); */
+>>>>>>> 163d1613654526e51c5f59bc8c7c344465ae6776
