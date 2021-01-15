@@ -2540,8 +2540,7 @@ let sayHiDeferred = defer(sayHi, 2000);
 
 
 sayHiDeferred('Aleh') */
-=======
- */
+
 /* setInterval(function() {
     console.log(i);
 }, 100) */
@@ -2642,4 +2641,279 @@ console.log(user.name) */
 let aleh = new User('Aleh', new Date(1993, 7, 7))
 console.log(aleh);
 console.log(aleh.age); */
->>>>>>> 163d1613654526e51c5f59bc8c7c344465ae6776
+
+
+////PROTOTYPE
+
+/* let animal = {
+    eats: true,
+}
+
+let rabbit = {
+        jumps: true
+    }
+
+Object.getPrototypeOf(animal);
+console.log(rabbit.eats); */
+
+/* let animal = {
+    eats: true,
+};
+
+let rabbit = {
+    jumps: true,
+}
+
+rabbit.__proto__ = animal;
+
+console.log(rabbit.eats, rabbit.jumps, animal.jumps); */
+
+/* let user = {
+    name: "Aleh",
+    surname: 'Kudzelka',
+
+    get fullname() {
+        return `${this.name} ${this.surname}`
+    },
+
+    set fullname(value) {
+        [this.name, this.surname] = value.split(" ")
+    }
+
+}
+
+
+
+console.log(user.fullname);
+
+user.name = "Tatsiana";
+user.surname = "Kudzelka";
+
+console.log(user.fullname);
+
+user.fullname = "Elena Popko";
+console.log(user.fullname);
+console.log(user.name); */
+/* let animal = {
+    eats: true,
+};
+
+let rabbit = {
+    jumps: true,
+}
+
+rabbit.__proto__ = animal;
+
+
+animal.walk = function() {
+    return console.log('Animal walk');
+}
+rabbit.walk();
+rabbit.walk = function() {
+    console.log("good");
+};
+animal.walk()
+rabbit.walk() */
+
+/* let user = {
+    name: "Aleh",
+    surName: "Kudzelka",
+
+    get fullName() {
+        return `${this.name} ${this.surName}`
+    },
+
+    set fullName(value) {
+        [this.name, this.surname] = value.split(" ")
+    },
+
+}
+
+let admin = {
+    __proto__: user,
+    isAdmin: true,
+}
+
+
+console.log(admin.fullName);
+admin.fullName = "Tatsiana Kudzelka";
+console.log(admin.fullName);
+
+console.log(user.fullName); */
+
+/* let animal = {
+    walk() {
+        if (!this.isSleeping) console.log("I walk");
+    },
+    sleep() {
+        this.isSleeping = true;
+    }
+};
+
+let rabbit = {
+    __proto__: animal,
+    name: "White Rabbit"
+}
+
+rabbit.sleep();
+
+
+
+for (let i in rabbit) {
+    let isOwn = rabbit.hasOwnProperty(i)
+
+    if (isOwn) {
+        console.log(i);
+    }
+} */
+
+/* let head = {
+    glesses: 1,
+}
+
+let table = {
+    pen: 3,
+    __proto__: head,
+}
+
+let bed = {
+    sheet: 1,
+    pillow: 2,
+    __proto__: table,
+}
+
+let pockets = {
+    money: 2000,
+    __proto__: bed,
+}
+console.log(pockets.pen, bed.glesses); */
+
+/* let hamster = {
+
+    eat(food) {
+        this.stomach.push(food)
+    }
+}
+
+let speedy = {
+    stomach: [],
+    __proto__: hamster
+}
+
+let lazy = {
+    stomach: [],
+    __proto__: hamster
+}
+
+speedy.eat('apple');
+speedy.eat('orange')
+speedy.eat('cherry')
+lazy.eat('grapes')
+
+console.log(speedy.stomach);
+console.log(lazy.stomach); */
+
+/* let animal = {
+    eats: true,
+}
+
+function Rabbit(name) {
+    this.name = name;
+}
+console.dir(Rabbit);
+Rabbit.prototype = animal;
+console.log(Rabbit.prototype);
+
+let rabbit = new Rabbit();
+
+console.log(rabbit.name, rabbit.eats);
+console.log(rabbit.constructor == Rabbit); */
+
+/* function Rabbit() {}
+Rabbit.prototype = {
+    eats: true
+}
+
+let rabbit = new Rabbit();
+
+delete Rabbit.prototype.eats;
+
+console.log(rabbit.eats); */
+
+/* function Rabbit(name) {
+    this.name = name;
+
+}
+
+let rabbit = new Rabbit('White rabbit');
+
+console.log(rabbit);
+
+let rabbit2 = new rabbit.constructor('Black rabbit');
+console.log(rabbit2); */
+
+/* let obj = {};
+
+console.log(obj.__proto__ == Object.prototype); */
+
+/* let arr = [1, 2, 3];
+
+console.log(arr);
+
+String.prototype.show = function() {
+    console.log(this);
+};
+
+"Boom!".show();
+console.dir(String); */
+
+/* let obj = {
+    0: "Hello",
+    1: "World!",
+    length: 2,
+}
+obj.__proto__ = Array.prototype;
+obj.join = Array.prototype.join;
+console.log(obj.join(",")); */
+
+/* function f() {
+    console.log("Hello");
+}
+Function.prototype.defer = function(ms) {
+    setInterval(this, ms)
+}
+
+f.defer(1000) */
+
+/* function f(a, b) {
+    console.log(a + b);
+}
+
+Function.prototype.defer = function(ms) {
+    let f = this;
+    return function(...args) {
+        setTimeout(() => {
+            f.apply(this, args)
+        }, ms);
+    }
+}
+f.defer(1000)(1, 4) */
+
+let animal = {
+    eats: true,
+}
+
+/* let rabbit = Object.create(animal, {
+    name: {
+        value: "White Rabbit"
+    },
+})
+ */
+
+let rabbit = {
+    name: 'Pushok'
+}
+
+Object.setPrototypeOf(rabbit, animal)
+
+console.log(rabbit.eats, rabbit.name);
