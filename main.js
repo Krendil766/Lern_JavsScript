@@ -2898,17 +2898,17 @@ Function.prototype.defer = function(ms) {
     }
 }
 f.defer(1000)(1, 4) */
-
+/*
 let animal = {
     eats: true,
 }
 
-/* let rabbit = Object.create(animal, {
+let rabbit = Object.create(animal, {
     name: {
         value: "White Rabbit"
     },
 })
- */
+
 
 let rabbit = {
     name: 'Pushok'
@@ -2916,4 +2916,119 @@ let rabbit = {
 
 Object.setPrototypeOf(rabbit, animal)
 
-console.log(rabbit.eats, rabbit.name);
+console.log(rabbit.eats, rabbit.name); */
+
+/* let animal = {
+    eats: true,
+    width: 50,
+}
+
+let rabbit = Object.create(animal, {
+    jumps: {
+        value: true
+    }
+});
+
+let hamster = {
+    lazzy: true,
+}
+Object.setPrototypeOf(hamster, rabbit)
+console.log(rabbit.eats, rabbit.lazzy);
+console.log(hamster.eats, hamster.lazzy, hamster.width, hamster.jumps); */
+
+/* let obj = Object.create(null);
+
+let key = prompt("what's the key", "__proto__");
+
+obj[key] = 'some value';
+
+console.log(obj[key]);
+console.log(obj); */
+
+/* let chineseDictionary = Object.create(null);
+
+console.log(chineseDictionary);
+
+chineseDictionary.hello = 'h';
+chineseDictionary.bye = 'b';
+console.log(Object.values(chineseDictionary)); */
+/*
+let dictionary = Object.create(null, {
+    toString: {
+        value() {
+            return Object.keys(this).toString()
+        }
+    }
+});
+
+dictionary.apple = "Apple";
+dictionary.__proto__ = "Test";
+
+console.log(dictionary);
+console.log(dictionary.toString());
+let des = Object.getOwnPropertyDescriptors(dictionary);
+console.log(des); */
+
+/* function Rabbit(name) {
+    this.name = name;
+}
+
+Rabbit.prototype.sayHi = function() {
+    console.log(this.name);
+}
+let rabbit = new Rabbit("homa");
+
+rabbit.sayHi();
+Rabbit.prototype.sayHi();
+Object.getPrototypeOf(rabbit).sayHi();
+rabbit.__proto__.sayHi(); */
+
+
+////CLASS
+
+/* class User {
+    constructor(name) {
+        this.name = name;
+    }
+    sayHi() {
+        console.log(this.name);
+    }
+}
+
+let user = new User('Aleh');
+
+user.sayHi()
+console.log(user);
+console.log(Object.getOwnPropertyNames(User.prototype)); */
+
+/* function makeClass(phrase) {
+    return class {
+        sayHi() {
+            console.log(phrase);
+        }
+    }
+}
+
+let User = makeClass('Hello');
+new User().sayHi() */
+
+class User {
+    constructor(name) {
+        this.name = name;
+    }
+    get name() {
+        return this._name
+    }
+    set name(value) {
+        if (value.length < 4) {
+            console.log('Litlle name');
+            return;
+        }
+        this._name = value;
+    }
+}
+
+let user = new User('Aleh');
+console.log(user.name);
+user = new User('Al')
+console.log(user.name);
