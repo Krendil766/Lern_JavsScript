@@ -3012,7 +3012,7 @@ console.log(Object.getOwnPropertyNames(User.prototype)); */
 let User = makeClass('Hello');
 new User().sayHi() */
 
-class User {
+/* class User {
     constructor(name) {
         this.name = name;
     }
@@ -3031,4 +3031,136 @@ class User {
 let user = new User('Aleh');
 console.log(user.name);
 user = new User('Al')
-console.log(user.name);
+console.log(user.name); */
+
+
+/* class Clock {
+    constructor({ template }) {
+        this.template = template;
+    }
+
+    render() {
+        let date = new Date();
+
+        let hours = date.getHours();
+        if (hours < 10) {
+            hours = '0' + hours;
+        }
+
+        let minuts = date.getMinutes();
+        if (minuts < 10) {
+            minuts = '0' + minuts;
+        }
+
+        let sec = date.getSeconds();
+        if (sec < 10) {
+            sec = '0' + sec;
+        }
+
+        let output = this.template.replace('h', hours).replace('m', minuts).replace('s', sec);
+        console.log(output);
+    }
+    start() {
+        this.render(),
+            this.clear()
+        this.render()
+        this.timer = setInterval(() => this.start(), 1000)
+    }
+    clear() {
+        clearInterval(this.timer),
+            console.clear()
+    }
+
+
+}
+let clock = new Clock({ template: 'h:m:s' });
+
+clock.start(); */
+
+/* class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    run(speed) {
+        this.speed = speed;
+        console.log(`${this.name} бежит со скоростью ${this.speed}`);
+    }
+    stop() {
+        this.speed = 0;
+        console.log(`${this.name} стоит`);
+    }
+}
+
+let animal = new Animal('Dog')
+
+class Rabbit extends Animal {
+
+    constructor(name, earLength) {
+        super(name)
+        this.earLength = earLength;
+    }
+
+    hide() {
+        console.log(`${this.name} прячется`);
+    }
+    stop() {
+        super.stop();
+        this.hide()
+    }
+}
+let rabbit = new Rabbit('Crock', 10)
+console.log(rabbit.earLength); */
+
+/* let animal = {
+    name: "Animal",
+    eat() {
+        console.log(`${this.name} кушает`);
+    }
+}
+
+let rabbit = {
+    __proto__: animal,
+    name: 'Rabbit',
+    eat() {
+        /// this.__proto__.eat.call(this)
+        super.eat()
+    }
+}
+
+let longEar = {
+    __proto__: rabbit,
+    name: "LongEar",
+    eat() {
+        //// this.__proto__.eat.call(this)
+        super.eat()
+    }
+}
+
+rabbit.eat();
+longEar.eat() */
+
+let animal = {
+    sayHi() {
+        console.log("Я животное");
+    }
+}
+
+let rabbit = {
+    __proto__: animal,
+    sayHi() {
+        super.sayHi()
+    }
+}
+
+let plant = {
+    sayHi() {
+        console.log("Я растение");
+    }
+}
+
+let tree = {
+    __proto__: rabbit,
+    sayHi: rabbit.sayHi
+}
+
+tree.sayHi()
