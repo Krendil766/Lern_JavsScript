@@ -3139,7 +3139,7 @@ let longEar = {
 rabbit.eat();
 longEar.eat() */
 
-let animal = {
+/* let animal = {
     sayHi() {
         console.log("Я животное");
     }
@@ -3163,4 +3163,112 @@ let tree = {
     sayHi: rabbit.sayHi
 }
 
-tree.sayHi()
+tree.sayHi() */
+
+/* class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+}
+
+class Rabbit extends Animal {
+    constructor(name) {
+        super(name)
+        this.created = Date.now()
+    }
+}
+
+let rabbit = new Rabbit('White Rabbit')
+
+console.log(rabbit.name); */
+
+/* class Clock {
+    constructor({ template }) {
+        this.template = template;
+    }
+
+    render() {
+
+        let date = new Date();
+
+        let hour = date.getHours();
+        if (hour < 10) {
+            hour = "0" + hour;
+        }
+
+        let minuts = date.getMinutes();
+        if (minuts < 10) {
+            minuts = "0" + minuts
+        }
+
+        let sec = date.getSeconds();
+        if (sec < 10) {
+            sec = "0" + sec
+        }
+
+        let output = this.template.replace("h", hour).replace("m", minuts).replace("s", sec);
+
+        console.log(output);
+    }
+
+    start() {
+        // console.clear()
+        this.render()
+        this.timer = setInterval(() => this.render(), 1000)
+
+
+    }
+
+    stop() {
+        clearInterval(this.timer)
+
+    }
+}
+
+let clock = new Clock({ template: "h:m:s" })
+
+
+class ExtendetClock extends Clock {
+    constructor(options) {
+        super(options)
+        let { precision = 1000 } = options;
+        this.precision = precision;
+    }
+    start() {
+        this.render();
+        this.timer = setInterval(() => this.render(), this.precision)
+    }
+}
+let extendetClock = new ExtendetClock({ template: "h:m:s", precision: 2000 });
+extendetClock.start() */
+
+/* class User {
+    static staticMethod() {
+        console.log(this === User);
+    }
+}
+
+let user = new User();
+User.staticMethod() */
+
+class Article {
+    constructor(title, date) {
+        this.title = title;
+        this.date = date;
+    }
+
+    static compare(articleA, articleB) {
+        return articleA.date - articleB.date
+    }
+}
+
+let articles = [
+    new Article("HTML", new Date(2019, 5, 1)),
+    new Article("CSS", new Date(2019, 10, 1)),
+    new Article("JavaScript", new Date(2019, 3, 1))
+];
+
+articles.sort(Article.compare);
+
+console.log(articles);
