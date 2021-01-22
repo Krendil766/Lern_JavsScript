@@ -3252,7 +3252,15 @@ extendetClock.start() */
 let user = new User();
 User.staticMethod() */
 
-class Article {
+/* class Article {
+    static publisher = "Aleh Kudzelka"
+}
+console.log(Article.publisher);
+Article.yar = 1993;
+
+console.log(new Article); */
+
+/* class Article {
     constructor(title, date) {
         this.title = title;
         this.date = date;
@@ -3260,6 +3268,10 @@ class Article {
 
     static compare(articleA, articleB) {
         return articleA.date - articleB.date
+    }
+
+    static createTodays() {
+        return new this('Сегодняшний дайджест', new Date())
     }
 }
 
@@ -3270,5 +3282,292 @@ let articles = [
 ];
 
 articles.sort(Article.compare);
-
 console.log(articles);
+
+articles.push(Article.createTodays());
+console.log(articles); */
+
+/* class Animal {
+    constructor(name, speed) {
+        this.name = name;
+        this.speed = speed;
+    }
+    run(speed = 0) {
+        this.speed += speed;
+        console.log(`${this.name} run in speed ${this.speed}`);
+    }
+
+    static compare(animalA, animalB) {
+        return animalA.speed - animalB.speed;
+    }
+}
+
+class Rabbit extends Animal {
+    hide() {
+        console.log(`${this.name} hide`);
+    }
+}
+
+let rabbits = [
+    new Rabbit("Black Rabbit", 27),
+    new Rabbit("White Rabbit", 25)
+]
+
+rabbits.sort(Rabbit.compare);
+console.log(rabbits[0].run()); */
+
+
+/* class Rabbit extends Object {
+    constructor(name) {
+        super()
+        this.name = name
+    }
+}
+
+let rabbit = new Rabbit("White Rabbit");
+
+console.log(rabbit.hasOwnProperty('name')); */
+
+/* class CoffeMachine {
+    _waterAmount = 0;
+
+    constructor(power) {
+        this._power = power;
+    }
+
+    set waterAmount(value) {
+        if (value < 0) {
+            throw new Error('Negative amount water')
+        }
+        this._waterAmount = value;
+    }
+
+    get waterAmount() {
+        return this._waterAmount
+    }
+    get power() {
+        return this._power
+    }
+
+}
+
+let coffeMachine = new CoffeMachine(700);
+coffeMachine.waterAmount = 500;
+console.log(coffeMachine.waterAmount);
+console.log(coffeMachine.power = 25); */
+
+
+/* class CoffeeMachine {
+
+    _waterAmount = 0;
+
+    setWaterAmount(value) {
+        if (value < 0) throw new Error("Отрицательное количество воды");
+        this._waterAmount = value;
+    }
+
+    getWaterAmount() {
+        return this._waterAmount;
+    }
+}
+
+new CoffeeMachine().setWaterAmount(500);
+ */
+
+/* class CoffeMachine {
+    #waterLimit = 200;
+
+    checkWater(value) {
+        if (value < 0) {
+            throw new Error(`Negative amount water`)
+        }
+        if (value > this.#waterLimit) {
+            throw new Error(`Too much water`)
+        }
+    }
+}
+
+let coffeMachine = new CoffeMac */
+
+
+/* class CoffeeMachine {
+    _waterAmount = 0;
+    get waterAmount() {
+        return this._waterAmount
+    }
+    set waterAmount(value) {
+        if (value < 0) {
+            throw new Error('Negative amount water')
+        }
+        this._waterAmount = value;
+    }
+}
+let machine = new CoffeeMachine();
+machine.waterAmount = 5000;
+console.log(machine.waterAmount); */
+
+/* class PowerArray extends Array {
+    isEmpty() {
+        return this.length === 0
+    }
+}
+
+let arr = new PowerArray(1, 2, 5, 10, 50)
+console.log(arr.isEmpty());
+
+let filteredArr = arr.filter(item => item >= 10)
+
+console.log(filteredArr);
+
+console.log(filteredArr.isEmpty());
+console.log(filteredArr); */
+
+/* class PowerArray extends Array {
+    isEmpty() {
+        return this.length === 0
+    }
+
+    static get[Symbol.species]() {
+        return Array
+    }
+}
+
+let arr = new PowerArray([1, 2, 5, 10, 50]);
+console.log(arr.isEmpty());
+
+let filteredArr = arr.filter(item => item >= 10);
+
+
+
+console.log(typeof(PowerArray)); */
+/*
+class Rabbit {}
+
+let rabbit = new Rabbit();
+
+console.log(rabbit instanceof Rabbit); */
+
+/* class Animal {
+    static[Symbol.hasInstance](obj) {
+        if (obj.canEat) return true
+    }
+}
+
+let obj = { canEat: true };
+
+console.log(obj instanceof Animal); */
+
+/* let obj = {};
+
+console.log(obj);
+console.log(obj.toString());
+
+let method = Object.prototype.toString;
+
+console.log(method.call(123));
+console.log(method.call('sdf'));
+console.log(method.call(obj)); */
+/*
+let user = {
+    [Symbol.toStringTag]: 'User'
+}
+
+console.log({}.toString.call(user)); */
+
+/* let sayHiMixin = {
+    sayHi() {
+        console.log(`Hello ${this.name}`);
+    },
+    sayBye() {
+        console.log(`Bye ${this.name}`);
+    }
+}
+
+class User {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+Object.assign(User.prototype, sayHiMixin);
+
+new User('Aleh').sayBye() */
+/*
+let sayMixin = {
+    say(phrase) {
+        console.log(phrase);
+    }
+}
+
+let sayHiMixin = {
+    __proto__: sayMixin,
+
+    sayHi() {
+        super.say(`hello, ${this.name}`)
+    },
+
+    sayBye() {
+        super.say(`bye, ${this.name}`)
+    }
+}
+
+class User {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+Object.assign(User.prototype, sayHiMixin);
+
+new User("aleh").sayBye() */
+
+let eventMixin = {
+
+    on(eventName, handler) {
+        if (!this._eventHandlers) {
+            this._eventHandlers = {}
+        }
+        if (!this._eventHandlers[eventName]) {
+            this._eventHandlers[eventName] = [];
+        }
+        this._eventHandlers[eventName].push(handler)
+    },
+
+    off(eventName, handler) {
+        let handlers = this._eventHandlers && this._eventHandlers[eventName];
+        if (!handlers) return;
+        for (let i = 0; i < handlers.length; i++) {
+            if (handlers[i] === handler) {
+                handlers.splice(i--, 1)
+            }
+        }
+    },
+
+    trigger(eventName, ...args) {
+        if (!this._eventHandlers || !this._eventHandlers[eventName]) {
+            return;
+        }
+
+        this._eventHandlers[eventName].forEach(handler => handler.apply(this, args))
+    }
+
+}
+
+class Menu {
+    choose(value) {
+        this.trigger('select', value)
+    }
+}
+
+Object.assign(Menu.prototype, eventMixin);
+
+let menu = new Menu();
+
+menu.on('select', value => console.log(`Selected value: ${value}`));
+menu.on('one', 777)
+
+menu.choose('123')
+console.log(menu);
+
+menu.off('one', 777)
+console.log(menu);
