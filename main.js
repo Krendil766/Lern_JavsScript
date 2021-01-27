@@ -3521,7 +3521,7 @@ Object.assign(User.prototype, sayHiMixin);
 
 new User("aleh").sayBye() */
 
-let eventMixin = {
+/* let eventMixin = {
 
     on(eventName, handler) {
         if (!this._eventHandlers) {
@@ -3570,4 +3570,198 @@ menu.choose('123')
 console.log(menu);
 
 menu.off('one', 777)
-console.log(menu);
+console.log(menu); */
+
+////TRY...CATCH
+
+/* try {
+    console.log('Start block try');
+} catch (err) {
+    console.log('Catch ignored as there are no erros');
+} */
+
+/* try {
+    setTimeout(function() {
+        let noSuchVariable;
+        console.log('good');
+    }, 1000)
+} catch (e) {
+    console.log("won't work");
+} */
+
+/* try {
+    lalalala;
+} catch (err) {
+    console.log(err.name);
+    console.log(err.message);
+    console.log(err.stack);
+} */
+
+/* let json = '{"name": "Aleh", "age":27}';
+let user = JSON.parse(json);
+
+console.log(user.age); */
+
+/* let json = '{"name":"aleh", "age": 27}';
+
+try {
+    let user = JSON.parse(json);
+    console.log(user.fullname);
+} catch (e) {
+    console.log('Sorry, there is an error in the data, we will try to get them again');
+    console.log(e.name);
+    console.log(e.message);
+} */
+
+/* let error = new Error('Огоб ошибка! О_о!!!');
+console.log(error.name);
+console.log(error.message); */
+/*
+let data = '{"age":27}';
+
+try {
+    user = JSON.parse(data);
+    if (!user.name) {
+        throw new SyntaxError('Data incomplete, no name')
+    }
+    console.log(user.name);
+} catch (e) {
+    console.log("JSON Error: " + e.message);
+}
+*/
+
+/*let json = '{"age":27}'
+
+try{
+    let user = JSON.parse(json);
+
+    if(!user.name){
+        throw new SyntaxError('Date incomplete, no name')
+    }
+    blabla;
+    console.log(user.name);
+
+}catch(err){
+    if(err.name=="SyntaxError"){
+        console.log("JSON Error:" + err.message);
+    }else{
+        throw err;
+    }
+
+}*/
+
+/*try{
+    console.log('try');
+    if(confirm ("Сгенерировать ошибку?")) BAD_CODE();
+}catch(e){
+    console.log("catch");
+}finally{
+    console.log('finally');
+}
+*/
+
+
+/*let num = +prompt('Enter positive integer?',35)
+let diff, result;
+
+function fib(n){
+    if(n<0||Math.trunc(n)!=n){
+        throw new Error ("Должно быть целое неотрицательное число")
+    }
+    return n<=1?n:fib(n-1)+fib(n-2)
+}
+
+let start = Date.now();
+
+try{
+    result = fib(num)
+}catch(e){
+    result = 0;
+}finally{
+    diff = Date.now()-start;
+}
+
+console.log(result||"возникла ошибка");
+console.log(`Выполнение заняло ${diff}ms` );
+*/
+/*
+let json = `{"age":27}`;
+
+class MyError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = this.constructor.name;
+    }
+}
+class ReadError extends MyError {
+    constructor(message, cause) {
+        super(message)
+        this.cause = cause
+    }
+}
+
+class ValidationError extends MyError {}
+class PropertyRequiredError extends ValidationError {
+    constructor(property) {
+        super("No property " + property);
+        this.property = property;
+    }
+}
+
+function validateUser(user) {
+    if (!user.age) {
+        throw new PropertyRequiredError('age')
+    }
+    if (!user.name) {
+        throw new PropertyRequiredError('name')
+    }
+}
+
+function readUser(json) {
+    let user;
+
+    try {
+        user = JSON.parse(json)
+    } catch (err) {
+        if (err instanceof SyntaxError) {
+            throw new ReadError('Syntax error', err)
+        } else {
+            throw err;
+        }
+    }
+
+    try {
+        validateUser(user)
+    } catch (err) {
+        if (err instanceof ValidationError) {
+            throw new ReadError('Error validation', err)
+        } else {
+            throw err;
+        }
+    }
+}
+
+try {
+    readUser(json);
+} catch (e) {
+    if (e instanceof ReadError) {
+        console.log(e);
+        console.log("Original error " + e.cause);
+    } else {
+        throw e;
+    }
+} */
+
+/* class FormatError extends SyntaxError {
+    constructor(message) {
+        super(message);
+        this.name = "FromatError";
+    }
+}
+
+let err = new FormatError('Error format')
+
+console.log(err.message);
+console.log(err.name, err.stack);
+console.log(err instanceof FormatError);
+console.log(err instanceof SyntaxError); */
