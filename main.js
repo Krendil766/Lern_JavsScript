@@ -3765,3 +3765,271 @@ console.log(err.message);
 console.log(err.name, err.stack);
 console.log(err instanceof FormatError);
 console.log(err instanceof SyntaxError); */
+
+///DOM
+
+/* function sayHi(){
+    console.log('Hello');
+    
+}
+
+document.body.style.background = 'red';
+
+
+window.sayHi()
+console.log(window.innerHeight);
+
+setTimeout(()=> document.body.style.background = "", 2000) */
+
+/* console.log(location.href);
+
+if(confirm('Wikipedia?')){
+    location.href = 'https://wikipedia.org'
+} */
+
+
+/* console.log(document.documentElement); */
+
+/* let li = document.querySelector('li')
+let br = 1;
+console.log(document.body.lastChild);
+console.log(li.hasChildNodes());
+console.log(br.hasChildNodes());
+ */
+
+/*  let obj = document.body.childNodes;
+ console.log(obj);
+ 
+ let arr = Array.from(obj);
+ console.log(arr);
+ let mapArr = arr.filter(item => item.innerHTML>1);
+ console.log(mapArr);
+ 
+
+ let neighbor_left = document.body.lastChild.previousElementSibling;
+ let neighbor_reight = document.head.nextSibling;
+ console.log(neighbor_left, neighbor_reight);
+
+ console.log(document.body.parentElement);
+ console.log(document.body.firstElementChild);
+
+ let obj1 = document.body.children;
+ console.log(obj1);
+ let arr1 = Array.from(obj1)
+ console.log(arr1);
+  */
+ 
+
+/*   let div = document.body.firstElementChild;
+  console.log(div);
+  let ul = div.nextElementSibling;
+  console.log(ul);
+  let li2 = ul.lastElementChild.innerHTML;
+  console.log(li2); */
+
+/*   table.style.border = '1px solid black';
+  let td = document.querySelectorAll('td');
+  for(let item of td){
+    item.style.border = '1px solid black'
+  } */
+/*  for(let i=0;i<5;i++){
+    table.rows[0].cells[0].style.backgroundColor = 'red'
+ } */
+/* let tr = table.rows
+ console.log(td);
+ console.log(tr);
+
+ for (let i = 0; i <tr.length;i++){
+     for(let j = 0; j<td.length;j++){
+        table.rows[i++].cells[j].style.backgroundColor = 'red'
+         
+     }
+ } */
+ 
+/*  
+  table.rows[0].cells[0].style.backgroundColor = 'red'
+  table.rows[1].cells[1].style.backgroundColor = 'red' */
+
+
+/* let elem = document.querySelectorAll('ul>li')
+let li = document.querySelector('li')
+
+for(let i of elem){
+
+    console.log(i.closest('ul'));
+    
+}
+ */
+/* let chapter = document.querySelector('.chapter');
+let book = document.querySelector('.book')
+console.log(book.contains(chapter));
+console.log(chapter.contains(book));
+console.log(book.closest('div'));
+console.log(chapter.matches('ul[class="chapter"]'));
+ */
+
+ /* let age = document.querySelector('#age-table');
+ let lab = age.querySelectorAll('label');
+ let td = document.querySelector('td');
+ let search = document.querySelector('form[name = "searh")');
+ let formIn = search.children[0];  */
+
+
+/* console.log(document.body.nodeName);
+console.log(document.body.tagName); */
+
+/* news.innerHTML += "By"
+console.log(news.textContent); */
+
+/* let name = prompt('Enter your name', "<b>Hamster</b>")
+console.log(name);
+elem1.innerHTML = name;
+elem2.textContent = name; */
+
+/* console.log(document.nodeType);
+ */
+
+
+/* document.body.myData = {
+    name:"Aleh",
+    age:27
+}
+
+console.log(document.body.myData.name);
+
+  
+  document.body.sayTagName = function(){
+      console.log(this.nodeName);
+      
+  }
+ 
+  document.body.sayTagName() */
+
+/*   console.log(body.getAttribute('TYPE'));
+  console.log(input.type);
+   */
+
+/*    console.log(document.body.setAttribute('input', 'Hello'));
+   console.log(elem.getAttribute('about'));
+   elem.setAttribute('about', 777)
+   console.log(elem.outerHTML);
+   document.body.setAttribute('tag',888);
+   
+ for(let attr of document.body.attributes){
+     console.log(attr);
+     
+ }
+   console.log(Array.from(document.body.attributes)[0].value)
+   
+    */
+/* let input = document.querySelector('input');
+
+input.setAttribute('id',1)
+console.log(input.id);
+input.id = "2";
+console.log(input.getAttribute("id"));
+
+input.setAttribute('value',777);
+console.log(input.value);
+input.value = 27;
+input.setAttribute('value',33)
+console.log(input.value);
+console.log(input.getAttribute('value'));
+
+input.setAttribute('checked', true);
+ */
+
+
+
+/*  let user = {
+     name:'Aleh',
+     age:27
+ }
+
+ let divs = document.querySelectorAll('[show-info]');
+ console.log(divs);
+ for(let i of divs){
+     let field = i.getAttribute('show-info')
+     i.innerHTML= user[field];
+ }
+
+console.log(divs[0].dataset.aboutNew = '123');
+ */
+
+ /* let div = document.querySelector('div')
+ console.log(div.dataset.widgetName); */
+ 
+/*  let link = document.querySelectorAll('li>a')
+
+ let arrLink = Array.from(link);
+ arrLink.filter((item)=>{
+    
+    item.setAttribute('data-new', item.getAttribute('href').slice(0,7))
+    if(item.dataset.new=="http://"){
+        item.style.color = "orange"
+    }
+ }) */
+
+/*  let links = document.querySelectorAll('a');
+
+ for(let link of links){
+     let href = link.getAttribute('href');
+
+     if(!href)continue;
+     if(!href.includes('://'))continue;
+     if(href.startsWith('http://internal.com')) continue;
+     console.log(href);
+     link.style.color = 'orange'   
+ }
+  */
+/*  let div = document.createElement('div');
+ let text = document.createTextNode('BY')
+document.body.append(div,text)
+div.innerHTML="hello"
+
+div.insertAdjacentHTML('afterbegin','<p>new tag P</p>');
+div.insertAdjacentHTML("beforebegin",'<h2>Title</h2>')
+
+setTimeout(()=>document.querySelector('p').remove(),2000);
+
+document.body.after(document.querySelector('h2')) */
+
+
+/* let div = document.createElement('div');
+div.id = "div";
+div.className = 'alert';
+div.innerHTML = "Вы прочитали важное сообщение";
+document.body.append(div)
+div.insertAdjacentHTML('afterbegin', "<strong>Всем привет!</strong>");
+
+let div2 = div.cloneNode(true);
+div.after(div2)
+div2.querySelector('strong').textContent += " This div2 " */
+
+
+/* let ul = document.createElement('ul');
+ul.id = "ul";
+document.body.append(ul);
+
+function getListContent(){
+    let fragment = new DocumentFragment();
+    let arr = [];
+
+    for(let i=0;i<=3;i++){
+        let li = document.createElement('li');
+        li.append(i);
+        //fragment.append(li)
+        arr.push(li)
+
+    }
+   // return fragment;
+   return arr
+}
+ul.append(...getListContent()) */
+
+
+/* setTimeout(()=>document.write("<h1>Hello</h1>"),2000) */
+/* let text = '<b>текст</b>';
+elem1.append(document.createTextNode(text));
+  elem2.innerHTML = text;
+  elem3.textContent = text; */
