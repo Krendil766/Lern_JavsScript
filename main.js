@@ -4033,3 +4033,471 @@ ul.append(...getListContent()) */
 elem1.append(document.createTextNode(text));
   elem2.innerHTML = text;
   elem3.textContent = text; */
+
+/*   let ol = document.createElement('ol');
+  ol.setAttribute('id','elem')
+  document.body.append(ol)
+  ol.insertAdjacentHTML('afterbegin', '<li>Hello</li> <li>World</li>')
+
+  function clear(value, li){
+      return value.innerHTML =""
+  }
+
+  clear(elem) */
+
+/*   console.log(table);
+ */
+
+/* let ul = document.createElement('ul');
+document.body.append(ul);
+
+function add(){
+    let text = prompt('Add text', 'text');
+    if(text){
+        let li = document.createElement('li')    
+    ul.append(li)
+    li.textContent = text;
+    return add()
+    }else{
+        return
+    }
+}
+add() */
+
+/* let ul = document.createElement('ul');
+document.body.append(ul);
+
+while(true){
+    let text = prompt('Enter text',"text");
+    if(!text)break;
+    let li = document.createElement('li')    
+    ul.append(li)
+    li.textContent = text;
+} */
+
+/* let data = {
+    "Рыбы": {
+      "форель": {},
+      "лосось": {}
+    },
+  
+    "Деревья": {
+      "Огромные": {
+        "секвойя": {},
+        "дуб": {}
+      },
+      "Цветковые": {
+        "яблоня": {},
+        "магнолия": {
+            "cherry":{
+                'see':{}
+            }
+        }
+      }
+    }
+  };
+
+
+  let div = document.createElement('div');
+  div.id = 'container';
+  document.body.append(div);
+
+  function createTree(container, obj){
+      container.innerHTML =createTreeText(obj);
+  }
+
+  function createTreeText(obj){
+   let li = "";
+   let ul;
+
+   for(let key in obj){
+       li +=`<li>` + key + createTreeText(obj[key]) + '</li>'
+       console.log(li);
+       
+   }
+   if(li){
+       ul= '<ul>' + li + '</ul>' 
+       console.log(ul);
+       
+   }
+   return ul || ""
+
+  }
+
+  createTree(container, data) */
+
+ /*  let div = document.createElement('div');
+  div.id = 'container';
+  document.body.append(div);
+
+  function createTree(container, obj){
+      container.append(createTreeDom(obj))
+  }
+
+  function createTreeDom(obj){
+      if(!Object.keys(obj).length) return;
+
+      let ul = document.createElement('ul');
+      for( let key in obj){
+          let li = document.createElement('li');
+          li.innerHTML = key;
+
+          let childrenUI = createTreeDom(obj[key]);
+
+        if(childrenUI){
+            li.append(childrenUI)
+        }
+        ul.append(li)
+      }
+      return ul || ""
+  }
+
+  createTree(container, data) */
+
+
+/*   let data = {
+      "Животные":{
+          "Млекопитающие": {
+              "Коровы":{},
+              "Ослы":{},
+              "Собаки":{},
+              "Тигры":{},
+          },
+          "Другие":{
+              "Змеи":{},
+              "Птицы":{},
+              "Ящерицы":{},
+          },
+      },
+      "Рыбы":{
+          "Аквариумные":{
+              "Гуппи":{},
+              "Скалярии":{},
+          },
+          "Морские":{
+              "Морская форель":{},
+          }
+      }
+  }
+
+let div = document.createElement('div');
+div.id = 'container';
+document.body.append(div);
+
+  function createTree(container, obj){
+      container.append(createTreeValue(obj))
+  }
+
+  function createTreeValue(obj){
+      if(!Object.keys(obj).length){
+          return;
+      }
+    let ul = document.createElement('ul');
+
+    for(let key in obj){
+        let li = document.createElement('li');
+        li.innerHTML = key;
+
+        let childrenUI = createTreeValue(obj[key]);
+
+        if(childrenUI){
+            li.append(childrenUI)
+        }
+
+        ul.append(li)
+    }
+    return ul || "";
+  }
+
+  createTree(container, data) */
+
+/* function countChildren(obj){
+   let lis = document.querySelectorAll('li');
+   for(let li of lis){
+       let count  = li.innerHTML.split('<li>').length-1;
+       if(count!=0)
+       li.firstChild.data += '[' + count + ']'
+}
+} */
+
+/* function countChildren(obj){
+    let lis = document.querySelectorAll('li');
+
+    for(let li of lis){
+        let descendantsCount = li.querySelectorAll('li').length
+        if(!descendantsCount)continue;
+        li.firstChild.data += descendantsCount;
+        
+    }
+}
+
+countChildren(data) */
+/* let table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>'; */
+/* let div = document.createElement('div');
+div.id = 'calendar';
+document.body.append(div)
+
+function getDaY(date){
+    let day = date.getDay();
+
+    
+    if(day==0){
+        day=7
+    }
+    return day-1
+}
+
+function createCalendary(elem, year, month){
+    let mon = month-1;
+    let d = new Date(year, mon);
+    console.log(d);
+    
+let table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
+
+for(let i=0;i<getDaY(d);i++){
+    table+='<td></td>'
+}
+while(d.getMonth()==mon){
+    table+='<td>' + d.getDate() + '</td>'
+    if(getDaY(d)%7==6){
+        table+='</tr><tr>'
+    }
+    if(d.getDate()-1==new Date().getDate()){
+        table+="<th>R</th>";
+    }
+    
+    d.setDate(d.getDate()+1);    
+}
+if(getDaY(d)!=0){
+    for(let i = getDaY(d);i<7;i++){
+        table+='<td></td>'
+    }
+}
+table+='</tr></table>';
+elem.innerHTML = table;
+}
+createCalendary(div, 2021, 1) */
+/* let div = document.createElement('div');
+let divBtn = document.createElement('div');
+divBtn.setAttribute('id','btn');
+div.id = 'container';
+document.body.append(div, divBtn)
+divBtn.insertAdjacentHTML('afterbegin','<button id ="start">Start</button> <button id="sTop">Stop</button>');
+
+function creaeteTime(){
+    for(let i=0;i<3;i++){
+        div.append(document.createElement('span'))
+    }
+
+    start.addEventListener('click',e=>{
+        clock.start()   
+    })
+    sTop.addEventListener('click',e=>{
+        clock.stop()   
+    })
+}
+class Clock{
+
+    render(){
+        let date = new Date();
+        
+        let hours = date.getHours();
+        if(hours<10){
+            hours="0"+hours;
+        }
+        
+        let minuts = date.getMinutes();
+        if(minuts<10){
+            minuts="0"+minuts;
+        }
+        
+        let sec = date.getSeconds();
+        if(sec<10){
+            sec="0"+sec;
+        }
+        
+        container.firstChild.innerHTML = hours + ":";
+        container.childNodes[1].innerHTML= minuts+ ":";
+        container.childNodes[2].innerHTML= sec;
+    }
+    start(){
+        this.render();
+        this.timer = setInterval(()=>this.render(),1000)
+    }
+    stop(){
+        clearInterval(this.timer)
+    }
+    
+}
+let clock = new Clock()
+creaeteTime()
+ */
+
+
+/* class Clock{
+    constructor({template}){
+        this.template = template;
+    }
+    render(){
+        let date = new Date();
+
+        let hours = date.getHours();
+        if(hours<10){
+            hours="0"+hours;
+        }
+        
+        let minuts = date.getMinutes();
+        if(minuts<10){
+            minuts="0"+minuts;
+        }
+        
+        let sec = date.getSeconds();
+        if(sec<10){
+            sec="0"+sec;
+        }
+
+        let output = this.template.replace('h', hours).replace('m', minuts).replace('s', sec);
+        console.log(output);
+    }
+    start(){
+        this.render();
+        this.clear();
+        this.render();
+        let timer = setInterval(()=>this.start(),1000)
+    }
+    clear(){
+        clearInterval(this.timer)
+        console.clear()
+    }
+}
+let clock = new Clock({template: 'h:m:s'})
+clock.start() 
+*/
+
+
+
+/* let sortedRows = Array.from(table.rows)
+  .slice(1)
+  .sort((rowA, rowB) => rowA.cells[0].innerHTML > rowB.cells[0].innerHTML ? 1 : -1);
+
+table.append(...sortedRows);
+
+ */
+/* document.body.style.backgroundColor = prompt('bacground color', "green")
+document.body.style.display = 'none';
+
+setTimeout(()=> document.body.style.display = "",2000) */
+
+/* let div=document.querySelector('.div');
+div.style.marginTop = '50px';
+
+console.log(getComputedStyle(div).margin);
+ */
+
+ /* function showNotification({top=0, right=0, html, className}){
+     let div = document.createElement('div');
+     div.className ='notification';
+     div.style.right = right+'px';
+     div.style.top = top+'px';
+     div.innerHTML = html;
+     div.classList.add(className);
+     document.body.append(div)
+     setTimeout(()=>div.remove(), 1500)
+
+ }
+ let i = 1;
+
+ setInterval(() => {
+    showNotification({
+        top:50,
+        right:100,
+        html: "Hello " + i++,
+        className: 'welcome'
+    }) 
+ }, 2000); */
+
+/*  console.log(example.offsetLeft);
+ console.log(example.offsetTop);
+ console.log(example.offsetParent);
+ console.log(example.offsetWidth);
+ console.log(example.offsetHeight); */
+/*  console.log(example.clientTop);
+ console.log(example.clientLeft); */
+
+/*  console.log(example.offsetWidth);
+ console.log(example.clientWidth);
+ */
+ 
+
+/*  let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight */
+ 
+/* let div =document.createElement('div');
+
+div.style.cssText = `width:50px; height:50px; overflow: scroll`
+
+document.body.append(div)
+
+console.log(div.offsetWidth, div.clientWidth, div.width);
+ */
+ 
+ 
+/*  function computedCenterField(size){
+    let centerGameWidth = (filed.clientWidth/2 - ball.offsetWidth/2) + 'px';
+    let centerGameheight = (filed.clientheight/2 - ball.offsetheight2) + 'px';
+
+
+ } */
+
+/*  console.log(document.documentElement.clientHeight, document.documentElement.clientWidth); */
+/*  console.log(document.documentElement.scrollHeight, document.documentElement.offsetHeight, document.documentElement.clientHeight); */
+
+/*  console.log('Текущая прокрутка сверху:' + window.pageYOffset);
+ console.log('Текущая прокрутка снизу:' + window.pageXOffset);
+ console.log(document.documentElement.scrollTop, document.documentElement.scrollLeft, window.pageYOffset);
+
+
+ b.addEventListener('click', e=>{
+  
+    b.scrollIntoView(false) 
+
+    })
+     */
+/*     li.innerHTML = "li"
+console.log(li.clientY, document.documentElement.pageY); */
+
+
+/* let div = document.querySelector('div');
+div.setAttribute('class', 'div');
+div.style.cssText = `margin: 50px auto; width:450px; border: 5px solid black`;
+console.log(div.getBoundingClientRect());
+console.log(div.clientWidth, div.offsetWidth, document.documentElement.offsetWidth);
+
+let centerX = document.documentElement.clientWidth/2;
+let centerY = document.documentElement.clientHeight/2;
+
+let centerElem = document.elementFromPoint(centerX, centerY);
+console.log(centerElem.tagName);
+centerElem.style.background = 'red'
+ */
+
+/*  let div = document.createElement('div');
+ div.style.cssText = `top:1500px`
+ div.id = 'coords-show-mark';
+
+ function createMessageUnder(elem, html){
+     let message = document.createElement('div');
+     message.style.cssText = 'position:fixed; color:red;'
+
+     let coords = elem.getBoundingClientRect();
+
+     message.style.left = coords.left + 'px';
+     message.style.right = coords.bottom + "px";
+
+     message.innerHTML = html;
+
+     return message
+ }
+ let message = createMessageUnder(div, "Hello World");
+
+ document.body.append(message);
+ setTimeout(()=>message.remove(), 4000) */
