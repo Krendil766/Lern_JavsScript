@@ -3770,7 +3770,7 @@ console.log(err instanceof SyntaxError); */
 
 /* function sayHi(){
     console.log('Hello');
-    
+
 }
 
 document.body.style.background = 'red';
@@ -3799,12 +3799,12 @@ console.log(br.hasChildNodes());
 
 /*  let obj = document.body.childNodes;
  console.log(obj);
- 
+
  let arr = Array.from(obj);
  console.log(arr);
  let mapArr = arr.filter(item => item.innerHTML>1);
  console.log(mapArr);
- 
+
 
  let neighbor_left = document.body.lastChild.previousElementSibling;
  let neighbor_reight = document.head.nextSibling;
@@ -3818,7 +3818,7 @@ console.log(br.hasChildNodes());
  let arr1 = Array.from(obj1)
  console.log(arr1);
   */
- 
+
 
 /*   let div = document.body.firstElementChild;
   console.log(div);
@@ -3842,11 +3842,11 @@ console.log(br.hasChildNodes());
  for (let i = 0; i <tr.length;i++){
      for(let j = 0; j<td.length;j++){
         table.rows[i++].cells[j].style.backgroundColor = 'red'
-         
+
      }
  } */
- 
-/*  
+
+/*
   table.rows[0].cells[0].style.backgroundColor = 'red'
   table.rows[1].cells[1].style.backgroundColor = 'red' */
 
@@ -3857,7 +3857,7 @@ let li = document.querySelector('li')
 for(let i of elem){
 
     console.log(i.closest('ul'));
-    
+
 }
  */
 /* let chapter = document.querySelector('.chapter');
@@ -3868,11 +3868,13 @@ console.log(book.closest('div'));
 console.log(chapter.matches('ul[class="chapter"]'));
  */
 
- /* let age = document.querySelector('#age-table');
- let lab = age.querySelectorAll('label');
- let td = document.querySelector('td');
- let search = document.querySelector('form[name = "searh")');
- let formIn = search.children[0];  */
+/*
+
+let age = document.querySelector('#age-table');
+et lab = age.querySelectorAll('label');
+et td = document.querySelector('td');
+et search = document.querySelectr ('form[name = "searh")');
+et formIn = search.children[0]; * /
 
 
 /* console.log(document.body.nodeName);
@@ -3897,12 +3899,12 @@ elem2.textContent = name; */
 
 console.log(document.body.myData.name);
 
-  
+
   document.body.sayTagName = function(){
       console.log(this.nodeName);
-      
+
   }
- 
+
   document.body.sayTagName() */
 
 /*   console.log(body.getAttribute('TYPE'));
@@ -3914,13 +3916,13 @@ console.log(document.body.myData.name);
    elem.setAttribute('about', 777)
    console.log(elem.outerHTML);
    document.body.setAttribute('tag',888);
-   
+
  for(let attr of document.body.attributes){
      console.log(attr);
-     
+
  }
    console.log(Array.from(document.body.attributes)[0].value)
-   
+
     */
 /* let input = document.querySelector('input');
 
@@ -3956,14 +3958,16 @@ input.setAttribute('checked', true);
 console.log(divs[0].dataset.aboutNew = '123');
  */
 
- /* let div = document.querySelector('div')
- console.log(div.dataset.widgetName); */
- 
+
+/*
+let div = document.querySelector('div')
+onsole.log(div.dataset.widgetName); * /
+
 /*  let link = document.querySelectorAll('li>a')
 
  let arrLink = Array.from(link);
  arrLink.filter((item)=>{
-    
+
     item.setAttribute('data-new', item.getAttribute('href').slice(0,7))
     if(item.dataset.new=="http://"){
         item.style.color = "orange"
@@ -3979,7 +3983,7 @@ console.log(divs[0].dataset.aboutNew = '123');
      if(!href.includes('://'))continue;
      if(href.startsWith('http://internal.com')) continue;
      console.log(href);
-     link.style.color = 'orange'   
+     link.style.color = 'orange'
  }
   */
 /*  let div = document.createElement('div');
@@ -4054,7 +4058,7 @@ document.body.append(ul);
 function add(){
     let text = prompt('Add text', 'text');
     if(text){
-        let li = document.createElement('li')    
+        let li = document.createElement('li')
     ul.append(li)
     li.textContent = text;
     return add()
@@ -4070,7 +4074,7 @@ document.body.append(ul);
 while(true){
     let text = prompt('Enter text',"text");
     if(!text)break;
-    let li = document.createElement('li')    
+    let li = document.createElement('li')
     ul.append(li)
     li.textContent = text;
 } */
@@ -4080,7 +4084,7 @@ while(true){
       "форель": {},
       "лосось": {}
     },
-  
+
     "Деревья": {
       "Огромные": {
         "секвойя": {},
@@ -4113,280 +4117,282 @@ while(true){
    for(let key in obj){
        li +=`<li>` + key + createTreeText(obj[key]) + '</li>'
        console.log(li);
-       
+
    }
    if(li){
-       ul= '<ul>' + li + '</ul>' 
+       ul= '<ul>' + li + '</ul>'
        console.log(ul);
-       
+
    }
    return ul || ""
 
   }
 
-  createTree(container, data) */
 
- /*  let div = document.createElement('div');
-  div.id = 'container';
-  document.body.append(div);
+reateTree(container, data) */
 
-  function createTree(container, obj){
-      container.append(createTreeDom(obj))
-  }
-
-  function createTreeDom(obj){
-      if(!Object.keys(obj).length) return;
-
-      let ul = document.createElement('ul');
-      for( let key in obj){
-          let li = document.createElement('li');
-          li.innerHTML = key;
-
-          let childrenUI = createTreeDom(obj[key]);
-
-        if(childrenUI){
-            li.append(childrenUI)
-        }
-        ul.append(li)
-      }
-      return ul || ""
-  }
-
-  createTree(container, data) */
-
-
-/*   let data = {
-      "Животные":{
-          "Млекопитающие": {
-              "Коровы":{},
-              "Ослы":{},
-              "Собаки":{},
-              "Тигры":{},
-          },
-          "Другие":{
-              "Змеи":{},
-              "Птицы":{},
-              "Ящерицы":{},
-          },
-      },
-      "Рыбы":{
-          "Аквариумные":{
-              "Гуппи":{},
-              "Скалярии":{},
-          },
-          "Морские":{
-              "Морская форель":{},
-          }
-      }
-  }
-
+/*
 let div = document.createElement('div');
 div.id = 'container';
 document.body.append(div);
 
-  function createTree(container, obj){
-      container.append(createTreeValue(obj))
-  }
+function createTree(container, obj) {
+        container.append(create TreeDom(obj))
 
-  function createTreeValue(obj){
-      if(!Object.keys(obj).length){
-          return;
-      }
-    let ul = document.createElement('ul');
 
-    for(let key in obj){
-        let li = document.createElement('li');
-        li.innerHTML = key;
+    f   unction createTreeDom(obj) {
+           i(f (!Object.keys (obj).length) return;
 
-        let childrenUI = createTreeValue(obj[key]);
+        e   t ul = document.createElement('ul');
+        for (let key in obj) {
+                let li = document.createElement('li');
+            i.innerHTML = key;
 
-        if(childrenUI){
-            li.append(childrenUI)
+                 let childrenUI = createTreeDom(obj[key]);
+
+                  if (childrenUI) {
+                i.append(childrenUI)
+                    }
+                    ul.append(li)
+
+                   return ul || ""
         }
 
-        ul.append(li)
-    }
-    return ul || "";
-  }
+                reateTree(container, data) * /
 
-  createTree(container, data) */
+
+        /*   l        et data = {
+                      "Животные":{
+                          "Млекопитающие": {
+                              "Коровы":{},
+                              "Ослы":{},
+                              "Собаки":{},
+                              "Тигры":{},
+                          },
+                          "Другие":{
+                              "Змеи":{},
+                              "Птицы":{},
+                              "Ящерицы":{},
+                          },
+                      },
+                      "Рыбы":{
+                          "Аквариумные":{
+                              "Гуппи":{},
+                              "Скалярии":{},
+                          },
+                          "Морские":{
+                              "Морская форель":{},
+                  }
+                      }
+                  }
+
+        let div = document.createElement('div');
+                div.id = 'container';
+                document.body.append(div);
+
+          function createTree(container, obj){
+                      container.append(createTreeValue(obj))
+                  }
+
+                  function createTreeValue(obj){
+                      if(!Object.keys(obj).length){
+                  return;
+                      }
+                    let ul = document.createElement('ul');
+
+            for(let key in obj){
+                        let li = document.createElement('li');
+                li.innerHTML = key;
+
+                        let childrenUI = createTreeValue(obj[key]);
+
+                if(childrenUI){
+                            li.append(childrenUI)
+                        }
+
+                        ul.append(li)
+            }
+                    return ul || "";
+          }
+
+                  createTree(container, data) */
 
 /* function countChildren(obj){
-   let lis = document.querySelectorAll('li');
-   for(let li of lis){
-       let count  = li.innerHTML.split('<li>').length-1;
-       if(count!=0)
-       li.firstChild.data += '[' + count + ']'
-}
-} */
+                   let lis = document.querySelectorAll('li');
+                   for(let li of lis){
+                       let count  = li.innerHTML.split('<li>').length-1;
+                       if(count!=0)
+               li.firstChild.data += '[' + count + ']'
+                }
+                } */
 
 /* function countChildren(obj){
     let lis = document.querySelectorAll('li');
 
     for(let li of lis){
-        let descendantsCount = li.querySelectorAll('li').length
+let descendantsCount = li.querySelectorAll('li').length
         if(!descendantsCount)continue;
         li.firstChild.data += descendantsCount;
-        
+
     }
 }
 
 countChildren(data) */
 /* let table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>'; */
 /* let div = document.createElement('div');
-div.id = 'calendar';
-document.body.append(div)
+        div.id = 'calendar';
+        document.body.append(div)
 
 function getDaY(date){
-    let day = date.getDay();
+            let day = date.getDay();
 
-    
-    if(day==0){
-        day=7
+
+            if(day==0){
+                day=7
     }
-    return day-1
-}
+            return day-1
+        }
 
-function createCalendary(elem, year, month){
+        function createCalendary(elem, year, month){
     let mon = month-1;
-    let d = new Date(year, mon);
+            let d = new Date(year, mon);
     console.log(d);
-    
-let table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
 
-for(let i=0;i<getDaY(d);i++){
-    table+='<td></td>'
-}
-while(d.getMonth()==mon){
-    table+='<td>' + d.getDate() + '</td>'
-    if(getDaY(d)%7==6){
-        table+='</tr><tr>'
-    }
+        let table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
+
+        for(let i=0;i<getDaY(d);i++){
+            table+='<td></td>'
+        }
+        while(d.getMonth()==mon){
+            table+='<td>' + d.getDate() + '</td>'
+            if(getDaY(d)%7==6){
+                table+='</tr><tr>'
+            }
     if(d.getDate()-1==new Date().getDate()){
-        table+="<th>R</th>";
-    }
-    
-    d.setDate(d.getDate()+1);    
-}
-if(getDaY(d)!=0){
-    for(let i = getDaY(d);i<7;i++){
-        table+='<td></td>'
-    }
-}
-table+='</tr></table>';
-elem.innerHTML = table;
-}
-createCalendary(div, 2021, 1) */
+                table+="<th>R</th>";
+            }
+
+            d.setDate(d.getDate()+1);
+        }
+        if(getDaY(d)!=0){
+            for(let i = getDaY(d);i<7;i++){
+                table+='<td></td>'
+            }
+        }
+        table+='</tr></table>';
+        elem.innerHTML = table;
+        }
+        createCalendary(div, 2021, 1) */
 /* let div = document.createElement('div');
-let divBtn = document.createElement('div');
-divBtn.setAttribute('id','btn');
-div.id = 'container';
-document.body.append(div, divBtn)
-divBtn.insertAdjacentHTML('afterbegin','<button id ="start">Start</button> <button id="sTop">Stop</button>');
+                let divBtn = document.createElement('div');
+                divBtn.setAttribute('id','btn');
+        div.id = 'container';
+                document.body.append(div, divBtn)
+                divBtn.insertAdjacentHTML('afterbegin','<button id ="start">Start</button> <button id="sTop">Stop</button>');
 
-function creaeteTime(){
-    for(let i=0;i<3;i++){
-        div.append(document.createElement('span'))
-    }
+                function creaeteTime(){
+            for(let i=0;i<3;i++){
+                        div.append(document.createElement('span'))
+                    }
 
-    start.addEventListener('click',e=>{
-        clock.start()   
-    })
-    sTop.addEventListener('click',e=>{
-        clock.stop()   
-    })
-}
-class Clock{
+                    start.addEventListener('click',e=>{
+                        clock.start()
+                    })
+                    sTop.addEventListener('click',e=>{
+                        clock.stop()
+            })
+                }
+                class Clock{
 
-    render(){
-        let date = new Date();
-        
-        let hours = date.getHours();
-        if(hours<10){
-            hours="0"+hours;
-        }
-        
-        let minuts = date.getMinutes();
-        if(minuts<10){
-            minuts="0"+minuts;
-        }
-        
-        let sec = date.getSeconds();
-        if(sec<10){
-            sec="0"+sec;
-        }
-        
-        container.firstChild.innerHTML = hours + ":";
-        container.childNodes[1].innerHTML= minuts+ ":";
-        container.childNodes[2].innerHTML= sec;
-    }
-    start(){
-        this.render();
-        this.timer = setInterval(()=>this.render(),1000)
-    }
-    stop(){
-        clearInterval(this.timer)
-    }
-    
-}
-let clock = new Clock()
-creaeteTime()
- */
+                    render(){
+                        let date = new Date();
+
+                        let hours = date.getHours();
+                if(hours<10){
+                            hours="0"+hours;
+                        }
+
+                        let minuts = date.getMinutes();
+                if(minuts<10){
+                            minuts="0"+minuts;
+                        }
+
+                        let sec = date.getSeconds();
+                if(sec<10){
+                            sec="0"+sec;
+                        }
+
+                        container.firstChild.innerHTML = hours + ":";
+                        container.childNodes[1].innerHTML= minuts+ ":";
+                        container.childNodes[2].innerHTML= sec;
+                    }
+                    start(){
+                        this.render();
+                        this.timer = setInterval(()=>this.render(),1000)
+                    }
+            stop(){
+                        clearInterval(this.timer)
+                    }
+
+                }
+        let clock = new Clock()
+        creaeteTime()
+                 */
 
 
 /* class Clock{
-    constructor({template}){
-        this.template = template;
-    }
-    render(){
-        let date = new Date();
+                    constructor({template}){
+                        this.template = template;
+            }
+                    render(){
+                        let date = new Date();
 
-        let hours = date.getHours();
-        if(hours<10){
-            hours="0"+hours;
-        }
-        
-        let minuts = date.getMinutes();
-        if(minuts<10){
-            minuts="0"+minuts;
-        }
-        
-        let sec = date.getSeconds();
-        if(sec<10){
-            sec="0"+sec;
-        }
+                        let hours = date.getHours();
+                if(hours<10){
+                            hours="0"+hours;
+                        }
 
-        let output = this.template.replace('h', hours).replace('m', minuts).replace('s', sec);
-        console.log(output);
-    }
-    start(){
-        this.render();
-        this.clear();
-        this.render();
-        let timer = setInterval(()=>this.start(),1000)
-    }
-    clear(){
-        clearInterval(this.timer)
-        console.clear()
-    }
-}
-let clock = new Clock({template: 'h:m:s'})
-clock.start() 
-*/
+                        let minuts = date.getMinutes();
+                if(minuts<10){
+                            minuts="0"+minuts;
+                        }
+
+                        let sec = date.getSeconds();
+                if(sec<10){
+                            sec="0"+sec;
+                        }
+
+                        let output = this.template.replace('h', hours).replace('m', minuts).replace('s', sec);
+                        console.log(output);
+                    }
+                    start(){
+                        this.render();
+                        this.clear();
+                        this.render();
+                        let timer = setInterval(()=>this.start(),1000)
+                    }
+                    clear(){
+                        clearInterval(this.timer)
+                        console.clear()
+                    }
+                }
+        let clock = new Clock({template: 'h:m:s'})
+        clock.start()
+        */
 
 
 
 /* let sortedRows = Array.from(table.rows)
-  .slice(1)
+          .slice(1)
   .sort((rowA, rowB) => rowA.cells[0].innerHTML > rowB.cells[0].innerHTML ? 1 : -1);
 
-table.append(...sortedRows);
+        table.append(...sortedRows);
 
  */
 /* document.body.style.backgroundColor = prompt('bacground color', "green")
-document.body.style.display = 'none';
+        document.body.style.display = 'none';
 
-setTimeout(()=> document.body.style.display = "",2000) */
+                setTimeout(()=> document.body.style.display = "",2000) */
 
 /* let div=document.querySelector('.div');
 div.style.marginTop = '50px';
@@ -4394,110 +4400,212 @@ div.style.marginTop = '50px';
 console.log(getComputedStyle(div).margin);
  */
 
- /* function showNotification({top=0, right=0, html, className}){
-     let div = document.createElement('div');
-     div.className ='notification';
-     div.style.right = right+'px';
-     div.style.top = top+'px';
-     div.innerHTML = html;
-     div.classList.add(className);
-     document.body.append(div)
-     setTimeout(()=>div.remove(), 1500)
+/* function showNotification({top=0, right=0, html, className}){
+                   let div = document.createElement('div');
+                    iv.className ='notification';
+                   div.style.right = right+'px';
+                   div.style.top = top+'px';
+                    iv.innerHTML = html;
+           div.classList.add(className);
+           document.body.append(div)
+                    etTimeout(()=>div.remove(), 1500)
 
- }
- let i = 1;
 
- setInterval(() => {
-    showNotification({
-        top:50,
-        right:100,
-        html: "Hello " + i++,
-        className: 'welcome'
-    }) 
- }, 2000); */
+                et i = 1;
+
+                etInterval(() => {
+                  showNotification({
+                      top:50,
+                       ight:100,
+                      html: "Hello " + i++,
+              className: 'welcome'
+                   )
+                , 2000); */
 
 /*  console.log(example.offsetLeft);
- console.log(example.offsetTop);
- console.log(example.offsetParent);
- console.log(example.offsetWidth);
- console.log(example.offsetHeight); */
+                 console.log(example.offsetTop);
+                 console.log(example.offsetParent);
+                 console.log(example.offsetWidth);
+         console.log(example.offsetHeight); */
 /*  console.log(example.clientTop);
  console.log(example.clientLeft); */
 
 /*  console.log(example.offsetWidth);
  console.log(example.clientWidth);
- */
- 
+         */
+
 
 /*  let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight */
- 
+
 /* let div =document.createElement('div');
 
 div.style.cssText = `width:50px; height:50px; overflow: scroll`
 
-document.body.append(div)
+        document.body.append(div)
 
 console.log(div.offsetWidth, div.clientWidth, div.width);
- */
- 
- 
+         */
+
+
 /*  function computedCenterField(size){
     let centerGameWidth = (filed.clientWidth/2 - ball.offsetWidth/2) + 'px';
-    let centerGameheight = (filed.clientheight/2 - ball.offsetheight2) + 'px';
+            let centerGameheight = (filed.clientheight/2 - ball.offsetheight2) + 'px';
 
 
- } */
+         } */
 
 /*  console.log(document.documentElement.clientHeight, document.documentElement.clientWidth); */
 /*  console.log(document.documentElement.scrollHeight, document.documentElement.offsetHeight, document.documentElement.clientHeight); */
 
 /*  console.log('Текущая прокрутка сверху:' + window.pageYOffset);
  console.log('Текущая прокрутка снизу:' + window.pageXOffset);
- console.log(document.documentElement.scrollTop, document.documentElement.scrollLeft, window.pageYOffset);
+         console.log(document.documentElement.scrollTop, document.documentElement.scrollLeft, window.pageYOffset);
 
 
  b.addEventListener('click', e=>{
-  
-    b.scrollIntoView(false) 
 
-    })
+            b.scrollIntoView(false)
+
+            })
      */
 /*     li.innerHTML = "li"
-console.log(li.clientY, document.documentElement.pageY); */
+        console.log(li.clientY, document.documentElement.pageY); */
 
 
 /* let div = document.querySelector('div');
-div.setAttribute('class', 'div');
-div.style.cssText = `margin: 50px auto; width:450px; border: 5px solid black`;
-console.log(div.getBoundingClientRect());
-console.log(div.clientWidth, div.offsetWidth, document.documentElement.offsetWidth);
+                div.setAttribute('class', 'div');
+        div.style.cssText = `margin: 50px auto; width:450px; border: 5px solid black`;
+                console.log(div.getBoundingClientRect());
+                console.log(div.clientWidth, div.offsetWidth, document.documentElement.offsetWidth);
 
-let centerX = document.documentElement.clientWidth/2;
-let centerY = document.documentElement.clientHeight/2;
+                let centerX = document.documentElement.clientWidth/2;
+                let centerY = document.documentElement.clientHeight/2;
 
-let centerElem = document.elementFromPoint(centerX, centerY);
-console.log(centerElem.tagName);
-centerElem.style.background = 'red'
- */
+                let centerElem = document.elementFromPoint(centerX, centerY);
+        console.log(centerElem.tagName);
+                centerElem.style.background = 'red'
+                 */
 
 /*  let div = document.createElement('div');
- div.style.cssText = `top:1500px`
- div.id = 'coords-show-mark';
+         div.style.cssText = `top:1500px`
+         div.id = 'coords-show-mark';
 
  function createMessageUnder(elem, html){
-     let message = document.createElement('div');
+             let message = document.createElement('div');
      message.style.cssText = 'position:fixed; color:red;'
 
-     let coords = elem.getBoundingClientRect();
+             let coords = elem.getBoundingClientRect();
 
-     message.style.left = coords.left + 'px';
+             message.style.left = coords.left + 'px';
      message.style.right = coords.bottom + "px";
 
-     message.innerHTML = html;
+             message.innerHTML = html;
 
      return message
- }
- let message = createMessageUnder(div, "Hello World");
+         }
+         let message = createMessageUnder(         setTimeout(()=>message.remove(), 4000) */
 
- document.body.append(message);
- setTimeout(()=>message.remove(), 4000) */
+
+/* function countRabbits() {
+    for (let i = 0; i < 3; i++) {
+        console.log('Rabbits number:' + i);
+    }
+}
+
+let input = document.createElement('input');
+input.value = 'Submit';
+document.body.append(input);
+//input.setAttribute('onclick', "countRabbits()");
+input.setAttribute('type', "button")
+input.onclick = countRabbits; */
+
+/* document.addEventListener('keydown', e => {
+    console.log(e);
+})
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log('DOM loaded');
+}) */
+
+/* let input = document.createElement('input');
+document.body.append(input);
+input.type = "button";
+input.value = 'Submit';
+
+input.addEventListener('click', e => {
+    console.log(e.type);
+    console.log(e.currentTarget);
+    console.log(e.clientX + ":" + e.clientY);
+})
+input.addEventListener('click', {
+    handleEvent(e) {
+        console.log(e.type + "na " + e.currentTarget);
+    }
+}) */
+/* let button = document.createElement('button');
+document.body.append(button);
+button.innerHTML = 'Button';
+button.id = 'idd'
+
+class Menu {
+    handleEvent(e) {
+        switch (e.type) {
+            case 'mousedown':
+                idd.innerHTML = 'Up button mouse ';
+                break;
+            case 'mouseup':
+                idd.innerHTML = "... and down";
+                break;
+        }
+    }
+}
+let menu = new Menu();
+button.addEventListener('mousedown', menu);
+button.addEventListener('mouseup', menu) */
+/* let button = document.createElement('button');
+let div = document.createElement('div');
+div.innerHTML = "text"
+button.innerHTML = 'Enter, hide text';
+document.body.append(button);
+document.body.append(div)
+button.addEventListener('click', () => {
+    button.style.display = 'none'
+}) */
+
+
+/* field.addEventListener('click', e => {
+    ball.style.left = e.clientX - field.clientLeft - field.offsetLeft - ball.offsetWidth / 2 + "px";
+    ball.style.top = e.clientY - field.clientTop - field.offsetTop - ball.offsetHeight / 2 + "px";
+
+
+})
+console.log(field.clientLeft);
+console.log(field.offsetLeft); */
+/* let button = document.createElement('button')
+button.innerHTML = "Sweet"
+let ul = document.createElement('ul');
+for (let i = 0; i < 3; i++) {
+    ul.insertAdjacentHTML('beforeend', `<li>${i}</li>`)
+}
+document.body.append(button)
+document.body.append(ul)
+button.addEventListener('click', () => {
+    ul.classList.toggle("dis")
+    if (ul.classList.contains('dis')) {
+        ul.hidden = true;
+    } else {
+        ul.hidden = false;
+    }
+}) */
+
+let remove = document.querySelector('.remove-button');
+
+let panes = document.querySelectorAll('.pane');
+
+let arr = Array.from(panes);
+arr.forEach(item => {
+    item.insertAdjacentHTML('afterbegin', '<button class="remove-button">[x]</button>');
+    item.addEventListener('click', () => {
+        item.remove()
+    })
+})
